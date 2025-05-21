@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paris Explorer Tour | Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <style>
+        /* Global Styles - Consistent with About Page */
+        :root {
+            --primary-color: #2a5c8d;
+            --secondary-color: #f39c12;
+            --dark-color: #333;
+            --light-color: #f4f4f4;
+            --white: #fff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .btn-large {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 15px auto;
+        }
+
+        /* Header Styles - Consistent with About Page */
+
+
+        /* Tour Hero Section */
+        .tour-hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1431274172761-fca41d930114?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            margin-top: 80px; /* Account for fixed header */
+        }
+
+        .tour-hero-content {
+            max-width: 800px;
+        }
+
+        .tour-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .tour-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .tour-meta-item {
+            display: flex;
+            align-items: center;
+            margin-right: 30px;
+        }
+
+        .tour-meta-item i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .tour-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .tour-price span {
+            font-size: 1rem;
+            font-weight: normal;
+            color: var(--white);
+        }
+
+        /* Tour Details Section */
+        .tour-details {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+        }
+
+        .tour-content {
+            margin-bottom: 50px;
+        }
+
+        .tour-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .tour-content p {
+            margin-bottom: 20px;
+        }
+
+        .tour-highlights {
+            margin: 30px 0;
+        }
+
+        .tour-highlights h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+        }
+
+        .tour-highlights ul {
+            list-style-position: inside;
+            margin-left: 20px;
+        }
+
+        .tour-highlights li {
+            margin-bottom: 10px;
+        }
+
+        .tour-itinerary {
+            margin: 40px 0;
+        }
+
+        .itinerary-day {
+            margin-bottom: 30px;
+            border-left: 3px solid var(--secondary-color);
+            padding-left: 20px;
+        }
+
+        .itinerary-day h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Tour Sidebar */
+        .tour-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .tour-booking-card {
+            background: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .booking-card-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .booking-card-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .booking-card-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .booking-card-price span {
+            font-size: 1rem;
+            font-weight: normal;
+            color: var(--dark-color);
+        }
+
+        .booking-card-details {
+            margin-bottom: 30px;
+        }
+
+        .booking-detail {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .booking-detail:last-child {
+            border-bottom: none;
+        }
+
+        .booking-detail-label {
+            font-weight: 600;
+        }
+
+        .booking-form-group {
+            margin-bottom: 20px;
+        }
+
+        .booking-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .booking-form-group input,
+        .booking-form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .booking-form-group input:focus,
+        .booking-form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Gallery Section */
+        .tour-gallery {
+            background: var(--light-color);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Reviews Section */
+        .tour-reviews h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .reviews-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .review {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .review-user {
+            display: flex;
+            align-items: center;
+        }
+
+        .review-user img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .review-user h4 {
+            color: var(--primary-color);
+        }
+
+        .review-rating {
+            color: var(--secondary-color);
+        }
+
+        /* Similar Tours Section */
+        .similar-tours {
+            background: var(--light-color);
+        }
+
+        .tours-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .tour-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .tour-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .tour-card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .tour-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .tour-card:hover .tour-card-img img {
+            transform: scale(1.1);
+        }
+
+        .tour-card-content {
+            padding: 20px;
+        }
+
+        .tour-card-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .tour-card-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .tour-card-meta i {
+            color: var(--secondary-color);
+            margin-right: 5px;
+        }
+
+        .tour-card-price {
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Footer - Consistent with About Page */
+        footer {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .modal h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .tour-details {
+                grid-template-columns: 1fr;
+            }
+
+            .tour-sidebar {
+                position: static;
+                margin-top: 50px;
+            }
+
+            .gallery-container, .tours-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: var(--white);
+                width: 100%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 0;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .tour-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-container, .tours-container {
+                grid-template-columns: 1fr;
+            }
+
+            .tour-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .tour-meta-item {
+                margin-bottom: 15px;
+            }
+
+            .tour-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+  <nav class="navbar navbar-expand-lg" id="navbar">
+        <div class="container">
+          <a class="navbar-brand" href="index.html" id="logo"><span>A</span>dvanture</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span><i class="fa-solid fa-bars"></i></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#book">Book</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#packages">Packages</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#services">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#gallary">Gallary</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+             
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="text" placeholder="Search">
+              <button class="btn btn-primary" type="button">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    <!-- Tour Hero Section -->
+    <section class="tour-hero">
+        <div class="container">
+            <div class="tour-hero-content">
+                <h1>Paris Explorer Tour</h1>
+                <div class="tour-meta">
+                    <div class="tour-meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Paris, France</span>
+                    </div>
+                    <div class="tour-meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>5 Days / 4 Nights</span>
+                    </div>
+                    <div class="tour-meta-item">
+                        <i class="fas fa-users"></i>
+                        <span>Max. 12 People</span>
+                    </div>
+                </div>
+                <div class="tour-price">
+                    $899 <span>per person</span>
+                </div>
+                <a href="#booking" class="btn btn-large">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Details Section -->
+    <section class="section">
+        <div class="container">
+            <div class="tour-details">
+                <div class="tour-content">
+                    <h2>Tour Overview</h2>
+                    <p>Experience the magic of Paris with our exclusive 5-day exploration tour. This carefully curated itinerary takes you beyond the typical tourist spots to discover the authentic charm of the City of Lights while still visiting all the iconic landmarks.</p>
+                    
+                    <div class="tour-highlights">
+                        <h3>Tour Highlights</h3>
+                        <ul>
+                            <li>Skip-the-line access to the Eiffel Tower summit</li>
+                            <li>Private guided tour of the Louvre Museum</li>
+                            <li>Seine River dinner cruise with live music</li>
+                            <li>Visit to Montmartre and Sacré-Cœur Basilica</li>
+                            <li>Exclusive wine tasting in a Parisian cellar</li>
+                            <li>Walking tour of Le Marais district</li>
+                            <li>Day trip to Versailles Palace (optional upgrade)</li>
+                        </ul>
+                    </div>
+
+                    <div class="tour-itinerary">
+                        <h2>Detailed Itinerary</h2>
+                        
+                        <div class="itinerary-day">
+                            <h3>Day 1: Arrival & Welcome to Paris</h3>
+                            <p>Arrive at your hotel where you'll meet your tour guide and fellow travelers. After settling in, we'll take an orientation walk through the nearby neighborhood, followed by a welcome dinner at a traditional Parisian bistro.</p>
+                        </div>
+                        
+                        <div class="itinerary-day">
+                            <h3>Day 2: Iconic Landmarks & Louvre</h3>
+                            <p>Morning visit to the Eiffel Tower with skip-the-line access to the summit for breathtaking views. After lunch at a local café, enjoy a private guided tour of the Louvre Museum focusing on its masterpieces. Evening at leisure.</p>
+                        </div>
+                        
+                        <div class="itinerary-day">
+                            <h3>Day 3: Montmartre & Seine Cruise</h3>
+                            <p>Explore the artistic Montmartre district, visiting Sacré-Cœur Basilica and Place du Tertre. Afternoon free for shopping or optional activities. In the evening, enjoy a gourmet dinner cruise along the Seine River with live music.</p>
+                        </div>
+                        
+                        <div class="itinerary-day">
+                            <h3>Day 4: Le Marais & Wine Tasting</h3>
+                            <p>Walking tour through the historic Le Marais district with its stunning architecture and trendy boutiques. Afternoon wine tasting in a traditional Parisian cellar. Optional evening cabaret show (additional cost).</p>
+                        </div>
+                        
+                        <div class="itinerary-day">
+                            <h3>Day 5: Departure or Versailles Extension</h3>
+                            <p>Morning at leisure for last-minute shopping or sightseeing. Optional day trip to the Palace of Versailles (additional cost). Transfer to the airport for your departure flight.</p>
+                        </div>
+                    </div>
+
+                    <h2>What's Included</h2>
+                    <div class="tour-highlights">
+                        <h3>Inclusions</h3>
+                        <ul>
+                            <li>4 nights in a 4-star central Paris hotel</li>
+                            <li>Daily breakfast and 2 dinners</li>
+                            <li>All entrance fees to mentioned attractions</li>
+                            <li>Professional English-speaking tour guide</li>
+                            <li>Small group size (max 12 people)</li>
+                            <li>Transportation for included activities</li>
+                            <li>24/7 local support</li>
+                        </ul>
+
+                        <h3>Exclusions</h3>
+                        <ul>
+                            <li>International flights</li>
+                            <li>Travel insurance</li>
+                            <li>Optional activities</li>
+                            <li>Personal expenses</li>
+                            <li>Gratuities for guides and drivers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Booking Sidebar -->
+                <aside class="tour-sidebar" id="booking">
+                    <div class="tour-booking-card">
+                        <div class="booking-card-header">
+                            <h3>Book This Tour</h3>
+                        </div>
+                        <div class="booking-card-price">
+                            $899 <span>per person</span>
+                        </div>
+                        <div class="booking-card-details">
+                            <div class="booking-detail">
+                                <span class="booking-detail-label">Duration:</span>
+                                <span>5 Days</span>
+                            </div>
+                            <div class="booking-detail">
+                                <span class="booking-detail-label">Group Size:</span>
+                                <span>Max 12 People</span>
+                            </div>
+                            <div class="booking-detail">
+                                <span class="booking-detail-label">Difficulty:</span>
+                                <span>Easy</span>
+                            </div>
+                            <div class="booking-detail">
+                                <span class="booking-detail-label">Rating:</span>
+                                <span>4.9/5 (127 Reviews)</span>
+                            </div>
+                        </div>
+                        <form id="booking-form">
+                            <div class="booking-form-group">
+                                <label for="tour-date">Select Tour Date:</label>
+                                <input type="date" id="tour-date" required>
+                            </div>
+                            <div class="booking-form-group">
+                                <label for="travelers">Number of Travelers:</label>
+                                <select id="travelers" required>
+                                    <option value="">Select</option>
+                                    <option value="1">1 Traveler</option>
+                                    <option value="2">2 Travelers</option>
+                                    <option value="3">3 Travelers</option>
+                                    <option value="4">4 Travelers</option>
+                                    <option value="5">5+ Travelers</option>
+                                </select>
+                            </div>
+                            <a href="Book-Now.html"><button type="submit" class="btn btn-large btn-block">Buy Now</button></a>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="tour-gallery section">
+        <div class="container">
+            <h2 class="section-title">Tour Gallery</h2>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Eiffel Tower">
+                </div>
+              
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Seine River">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Montmartre">
+                </div>
+              
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Versailles">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="tour-reviews section">
+        <div class="container">
+            <h2 class="section-title">Traveler Reviews</h2>
+            <div class="reviews-container">
+                <div class="review">
+                    <div class="review-header">
+                        <div class="review-user">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Traveler">
+                            <div>
+                                <h4>Jessica Thompson</h4>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-date">
+                            March 2023
+                        </div>
+                    </div>
+                    <p>"This tour exceeded all my expectations! Our guide was incredibly knowledgeable and showed us parts of Paris I would never have found on my own. The small group size made it feel like a private tour. The Eiffel Tower at sunset was magical, and the wine tasting was a highlight!"</p>
+                </div>
+                
+                <div class="review">
+                    <div class="review-header">
+                        <div class="review-user">
+                            <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Traveler">
+                            <div>
+                                <h4>Robert Kim</h4>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-date">
+                            January 2023
+                        </div>
+                    </div>
+                    <p>"The Paris Explorer Tour was worth every penny. The itinerary was perfectly balanced between guided activities and free time. Our guide's insights into French culture and history made the city come alive. The hotel was in a fantastic location, and the group size was ideal for making new friends."</p>
+                </div>
+                
+                <div class="review">
+                    <div class="review-header">
+                        <div class="review-user">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Traveler">
+                            <div>
+                                <h4>Amanda Patel</h4>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-date">
+                            November 2022
+                        </div>
+                    </div>
+                    <p>"As a solo traveler, I felt completely safe and welcomed on this tour. The group was friendly, and our guide went above and beyond to ensure everyone had a great experience. The skip-the-line access to attractions saved us hours of waiting. The Seine River dinner cruise was the perfect romantic end to our Paris adventure."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Similar Tours Section -->
+    <section class="similar-tours section">
+        <div class="container">
+            <h2 class="section-title">You Might Also Like</h2>
+            <div class="tours-container">
+                <div class="tour-card">
+                    <div class="tour-card-img">
+                        <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rome Tour">
+                    </div>
+                    <div class="tour-card-content">
+                        <h3>Rome Highlights Tour</h3>
+                        <div class="tour-card-meta">
+                            <span><i class="fas fa-clock"></i> 4 Days</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Italy</span>
+                        </div>
+                        <div class="tour-card-price">From $749</div>
+                        <a href="tour-rome.html" class="btn">View Tour</a>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-card-img">
+                        <img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barcelona Tour">
+                    </div>
+                    <div class="tour-card-content">
+                        <h3>Barcelona Culture Tour</h3>
+                        <div class="tour-card-meta">
+                            <span><i class="fas fa-clock"></i> 3 Days</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Spain</span>
+                        </div>
+                        <div class="tour-card-price">From $649</div>
+                        <a href="tour-barcelona.html" class="btn">View Tour</a>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-card-img">
+                        <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Versailles Tour">
+                    </div>
+                    <div class="tour-card-content">
+                        <h3>Versailles Day Trip</h3>
+                        <div class="tour-card-meta">
+                            <span><i class="fas fa-clock"></i> 1 Day</span>
+                            <span><i class="fas fa-map-marker-alt"></i> France</span>
+                        </div>
+                        <div class="tour-card-price">From $129</div>
+                        <a href="tour-versailles.html" class="btn">View Tour</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Adventure</h3>
+                    <p>Your trusted partner for unforgettable travel experiences around the globe.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Booking Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Travel Street, Adventure City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@adventure.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Adventure. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Confirmation Modal -->
+    <div class="modal" id="booking-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Booking Confirmed!</h2>
+            <p>Thank you for booking the Paris Explorer Tour with Adventure. We've sent a confirmation email with all the details.</p>
+            <p>Our travel specialist will contact you within 24 hours to discuss any special requests and answer your questions.</p>
+            <a href="tours.html" class="btn">Browse More Tours</a>
+        </div>
+    </div>
+
+        <!-- Footer -->
+  <footer id="footer">
+      <h1><span>A</span>dvanture</h1>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus fugiat, ipsa quos nulla qui alias.</p>
+      <div class="social-links">
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-youtube"></i>
+        <i class="fa-brands fa-pinterest-p"></i>
+      </div>
+      <div class="credit">
+        <p>Designed By <a href="#">Adventures</a></p>
+      </div>
+      <div class="copyright">
+        <p>&copy;Copyright. All Rights Reserved</p>
+      </div>
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body></html>
